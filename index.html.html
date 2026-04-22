@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陳采潔 Tsai-Jye Chen — Portfolio & Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F0E8;
+    --ink: #1A1814;
+    --ink-light: #5A5650;
+    --accent: #C8392B;
+    --accent-warm: #E8A020;
+    --rule: #C8C0B0;
+    --white: #FEFCF8;
+    --serif-en: 'DM Serif Display', serif;
+    --mono: 'DM Mono', monospace;
+    --serif-zh: 'Noto Serif TC', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif-zh);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── LANG TOGGLE ── */
+  .lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.75rem 2.5rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .lang-toggle button {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.8rem;
+    background: transparent;
+    color: var(--ink);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 3rem;
+  }
+
+  .hero-left {
+    padding: 8rem 4rem 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: 8rem; left: 5rem;
+    width: 2px; height: 4rem;
+    background: var(--accent);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .hero-name-zh {
+    font-family: var(--serif-zh);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .hero-name-en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-title {
+    margin-top: 2rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-title::before {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: var(--ink-light);
+  }
+
+  .hero-right {
+    padding: 8rem 5rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-about {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--ink);
+    border-left: 3px solid var(--accent-warm);
+    padding-left: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-contact-item {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-contact-item span {
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 2rem;
+  }
+
+  /* ── SECTION SYSTEM ── */
+  section {
+    padding: 6rem 5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    padding-top: 0.3rem;
+  }
+
+  .section-title-en {
+    font-family: var(--serif-en);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .section-title-zh {
+    font-family: var(--serif-zh);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--white); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2rem;
+  }
+
+  .exp-item {
+    display: contents;
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    padding-top: 0.2rem;
+    line-height: 1.6;
+    text-align: right;
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .exp-content {
+    padding-bottom: 3rem;
+    padding-left: 0.5rem;
+  }
+
+  .exp-company-en {
+    font-family: var(--serif-en);
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .exp-company-zh {
+    font-family: var(--serif-zh);
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-desc {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    max-width: 60ch;
+  }
+
+  .exp-highlight {
+    display: inline-block;
+    background: var(--accent-warm);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── AWARDS ── */
+  #awards {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  #awards .section-title-en { color: var(--bg); }
+  #awards .section-num { color: var(--accent-warm); }
+  #awards .section-title-zh { color: rgba(245,240,232,0.5); }
+
+  .awards-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 2rem;
+  }
+
+  .award-item {
+    padding: 2rem;
+    background: var(--ink);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .award-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent-warm);
+    transition: width 0.4s ease;
+  }
+
+  .award-item:hover::before { width: 100%; }
+  .award-item:hover { background: #222018; }
+
+  .award-tier {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 0.75rem;
+  }
+
+  .award-name {
+    font-family: var(--serif-en);
+    font-size: 1.1rem;
+    color: var(--bg);
+    line-height: 1.3;
+  }
+
+  .award-name-zh {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.55);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .skill-group-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.7rem;
+    margin: 0.2rem 0.2rem 0.2rem 0;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .skill-tag:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--white); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .project-card {
+    background: var(--white);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .project-card:hover { background: #F0EBE0; }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--rule);
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 3rem;
+    font-weight: 500;
+    color: rgba(0,0,0,0.04);
+    font-family: var(--serif-en);
+    line-height: 1;
+  }
+
+  .project-type {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .project-name-zh {
+    font-family: var(--serif-zh);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .project-name-en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    margin-top: 0.2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: var(--ink-light);
+    max-width: 52ch;
+  }
+
+  .project-award {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-top: 1.25rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--accent-warm);
+  }
+
+  /* ── EDUCATION ── */
+  #education {
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  .edu-header-col {
+    padding: 6rem 4rem 6rem 5rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .edu-list-col {
+    padding: 6rem 5rem 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .edu-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-school-en {
+    font-family: var(--serif-en);
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .edu-school-zh {
+    font-family: var(--serif-zh);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-top: 0.15rem;
+  }
+
+  .edu-dept {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.5rem;
+  }
+
+  .edu-period {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--ink-light);
+    margin-top: 0.25rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-top: 2px solid var(--accent);
+  }
+
+  footer span { color: var(--accent-warm); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── LANG VISIBILITY ── */
+  .zh { display: block; }
+  .en { display: none; }
+  body.lang-en .zh { display: none; }
+  body.lang-en .en { display: block; }
+
+  .zh-inline { display: inline; }
+  .en-inline { display: none; }
+  body.lang-en .zh-inline { display: none; }
+  body.lang-en .en-inline { display: inline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 7rem 2rem 3rem; }
+    .hero-right { padding: 3rem 2rem; }
+    section { padding: 4rem 2rem; }
+    .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    #education { grid-template-columns: 1fr; }
+    .edu-header-col { border-right: none; border-bottom: 1px solid var(--rule); padding: 4rem 2rem; }
+    .edu-list-col { padding: 3rem 2rem; }
+    .section-header { grid-template-columns: 4rem 1fr; }
+    .exp-grid { grid-template-columns: 5rem 1fr; }
+    .lang-bar { padding: 0.75rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <div class="lang-toggle">
+    <button class="active" onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="zh-inline">設計師 · 工程師 · 創作者</span>
+      <span class="en-inline">Designer · Engineer · Creator</span>
+    </div>
+    <div class="hero-name-zh">陳采潔</div>
+    <div class="hero-name-en">Tsai-Jye Chen</div>
+    <div class="hero-title">
+      <span class="zh-inline">機構工程師 · 工業設計師</span>
+      <span class="en-inline">Mechanical Engineer · Industrial Designer</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-about">
+      <span class="zh">我擁有工業設計的訓練背景，並具備兩年以上的機構繪圖與設計實務經驗。對我來說，設計不僅僅是造型，而是能真正實現生產、體現產品價值的系統。我擅長將抽象的構想轉化為具體的結構與視覺，從概念、結構、材質到生產，注重產品在現實中的製造可行性與日常運作。過往曾赴日本文具工廠擔任作業員，親身經歷產線運作，深刻理解生產線、機構設計與成本管控如何影響最終的設計產出。</span>
+      <span class="en">With a background in industrial design and over two years of hands-on experience in mechanical drafting and design, I see design not merely as aesthetics, but as a system that realizes production and embodies product value. I specialize in translating abstract ideas into concrete structures and visuals — spanning concept, structure, materials, and manufacturing. Having worked on a production line at a Japanese stationery factory, I gained firsthand understanding of how manufacturing constraints, mechanical design, and cost control shape the final product.</span>
+    </div>
+    <div class="hero-contact">
+      <div class="hero-contact-item"><span>LOC</span> Taipei, Taiwan</div>
+      <div class="hero-contact-item"><span>EDU</span>
+        <span class="zh-inline">明志科技大學 工業設計系</span>
+        <span class="en-inline">Ming Chi Univ. of Technology — Industrial Design</span>
+      </div>
+      <div class="hero-contact-item"><span>SPEC</span>
+        <span class="zh-inline">Creo · SolidWorks · Rhino · Adobe Suite</span>
+        <span class="en-inline">Creo · SolidWorks · Rhino · Adobe Suite</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title-en">Experience</div>
+      <div class="section-title-zh">工作經歷</div>
+    </div>
+  </div>
+
+  <div class="exp-grid">
+
+    <div class="exp-period fade-in">2025.02<br>—<br>2026.03</div>
+    <div class="exp-content fade-in">
+      <div class="exp-highlight">
+        <span class="zh-inline">最新職位</span><span class="en-inline">Latest</span>
+      </div>
+      <div class="exp-company-zh">思達科技</div>
+      <div class="exp-company-en">STAr Technologies</div>
+      <div class="exp-role">
+        <span class="zh-inline">機構工程師</span>
+        <span class="en-inline">Mechanical Engineer</span>
+      </div>
+      <div class="exp-desc">
+        <span class="zh">負責機構零件設計與工程圖繪製，協同跨部門推動產品從設計到量產的流程管控。</span>
+        <span class="en">Responsible for mechanical component design and engineering drawings, collaborating cross-functionally to manage product development from design through mass production.</span>
+      </div>
+    </div>
+
+    <div class="exp-period fade-in">2023.11<br>—<br>2024.10</div>
+    <div class="exp-content fade-in">
+      <div class="exp-company-zh">日本百樂文具工廠</div>
+      <div class="exp-company-en">PILOT Corporation (Japan)</div>
+      <div class="exp-role">
+        <span class="zh-inline">作業員（打工度假）</span>
+        <span class="en-inline">Production Worker — Working Holiday</span>
+      </div>
+      <div class="exp-desc">
+        <span class="zh">赴日本打工度假，透過實際參與產線，深入理解機構設計、加工方式與生產效率對產品的實際影響。這段經歷讓設計思維建立在真實製造現場的基礎上。</span>
+        <span class="en">Worked on the production line during a working holiday in Japan. Gained firsthand insight into how mechanical design, processing methods, and production efficiency shape the final product — grounding design thinking in real manufacturing realities.</span>
+      </div>
+    </div>
+
+    <div class="exp-period fade-in">2022.05<br>—<br>2023.09</div>
+    <div class="exp-content fade-in">
+      <div class="exp-company-zh">富士達電梯</div>
+      <div class="exp-company-en">FUJITEC</div>
+      <div class="exp-role">
+        <span class="zh-inline">機構繪圖工程師</span>
+        <span class="en-inline">Mechanical Drafting Engineer</span>
+      </div>
+      <div class="exp-desc">
+        <span class="zh">負責電梯相關機構圖面繪製與工程文件管理，熟悉大型機械產品的結構設計規範與作業流程。</span>
+        <span class="en">Handled elevator-related mechanical drawings and engineering documentation, developing proficiency in structural design standards and processes for large-scale mechanical products.</span>
+      </div>
+    </div>
+
+    <div class="exp-period fade-in">2019.10<br>—<br>2020.10</div>
+    <div class="exp-content fade-in">
+      <div class="exp-company-zh">啟碁科技</div>
+      <div class="exp-company-en">WNC Corporation</div>
+      <div class="exp-role">
+        <span class="zh-inline">機構設計部門 實習助理</span>
+        <span class="en-inline">Intern Assistant — Mechanical Design</span>
+      </div>
+      <div class="exp-desc">
+        <span class="zh">協助機構設計部門進行日常設計作業與文件整理，建立工業產品機構設計的基礎認知。</span>
+        <span class="en">Assisted the mechanical design department with daily design tasks and documentation, building foundational knowledge of industrial product structural design.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-header fade-in">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title-en">Awards</div>
+      <div class="section-title-zh">獲獎紀錄</div>
+    </div>
+  </div>
+  <div class="awards-list fade-in">
+    <div class="award-item">
+      <div class="award-tier">
+        <span class="zh-inline">🥇 金獎</span><span class="en-inline">🥇 Gold</span>
+      </div>
+      <div class="award-name">Young Ones Student Awards</div>
+      <div class="award-name-zh">紐約設計協會新秀獎 ADC</div>
+    </div>
+    <div class="award-item">
+      <div class="award-tier">
+        <span class="zh-inline">🥈 銀獎</span><span class="en-inline">🥈 Silver</span>
+      </div>
+      <div class="award-name">
+        <span class="zh-inline">新一代設計產學合作企業大獎</span>
+        <span class="en-inline">New Generation Design Award</span>
+      </div>
+      <div class="award-name-zh">
+        <span class="zh-inline">合作企業：春池玻璃</span>
+        <span class="en-inline">Partner: Spring Pool Glass</span>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-tier">
+        <span class="zh-inline">🥉 銅獎</span><span class="en-inline">🥉 Bronze</span>
+      </div>
+      <div class="award-name">
+        <span class="zh-inline">新一代設計產學合作企業大獎</span>
+        <span class="en-inline">New Generation Design Award</span>
+      </div>
+      <div class="award-name-zh">
+        <span class="zh-inline">合作企業：建大輪胎</span>
+        <span class="en-inline">Partner: Kenda Tire</span>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-tier">
+        <span class="zh-inline">✦ 殊榮獎</span><span class="en-inline">✦ Honorary</span>
+      </div>
+      <div class="award-name">
+        <span class="zh-inline">光寶創新設計獎</span>
+        <span class="en-inline">Lite-On Innovation Design Award</span>
+      </div>
+      <div class="award-name-zh">英飛凌殊榮獎</div>
+    </div>
+    <div class="award-item">
+      <div class="award-tier">
+        <span class="zh-inline">★ 優等獎</span><span class="en-inline">★ Merit</span>
+      </div>
+      <div class="award-name">
+        <span class="zh-inline">康寧創星家創新應用競賽</span>
+        <span class="en-inline">Corning Creator Innovation Competition</span>
+      </div>
+      <div class="award-name-zh">優等獎 Merit Award</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header fade-in">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title-en">Portfolio</div>
+      <div class="section-title-zh">重點作品</div>
+    </div>
+  </div>
+  <div class="portfolio-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-type">
+        <span class="zh-inline">醫療 · 交通工具設計</span>
+        <span class="en-inline">Medical &amp; Transportation Design</span>
+      </div>
+      <div class="project-name-zh">Tambu 伸縮救護車</div>
+      <div class="project-name-en">Telescopic Ambulance</div>
+      <div class="project-desc">
+        <span class="zh">針對擁擠城市與狹窄巷弄設計，車體可橫向伸縮並配備全向移動輪胎與壓電模組，有效縮短黃金救援時間，重新定義城市急救載具。</span>
+        <span class="en">Designed for dense urban environments and narrow alleyways. The vehicle body expands laterally, equipped with omnidirectional tires and piezoelectric modules to minimize response time and redefine urban emergency vehicles.</span>
+      </div>
+      <div class="project-award">🥇 ADC Young Ones Gold Award</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-type">
+        <span class="zh-inline">醫療服務系統設計</span>
+        <span class="en-inline">Medical Service System Design</span>
+      </div>
+      <div class="project-name-zh">處方籤快遞</div>
+      <div class="project-name-en">Prescription Delivery System</div>
+      <div class="project-desc">
+        <span class="zh">結合健保卡認證與專用配送藥箱，減少慢性病患者頻繁出入醫院的感染風險，建立完整的軟硬體服務流程。</span>
+        <span class="en">Integrates NHI card authentication with a dedicated delivery case system, reducing chronic patients' hospital visit frequency and infection risk through a complete hardware-software service flow.</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-type">
+        <span class="zh-inline">文化 · 產品設計</span>
+        <span class="en-inline">Cultural · Product Design</span>
+      </div>
+      <div class="project-name-zh">萍香 · 源 茶具設計</div>
+      <div class="project-name-en">Ping Xiang · Yuan Tea Ware</div>
+      <div class="project-desc">
+        <span class="zh">將中華文化元素（萍水相逢、風水球、燕尾）轉化為現代個人辦公茶具，兼具實用性與文化意涵，以設計語言詮釋傳統精神。</span>
+        <span class="en">Translates Chinese cultural motifs — chance encounters (萍水相逢), feng shui spheres, and swallow tail forms — into contemporary personal tea ware, balancing utility with cultural narrative.</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-type">
+        <span class="zh-inline">行為設計 · 餐具</span>
+        <span class="en-inline">Behavioral Design · Tableware</span>
+      </div>
+      <div class="project-name-zh">祿食 組合公筷</div>
+      <div class="project-name-en">Lu Shi — Modular Serving Chopsticks</div>
+      <div class="project-desc">
+        <span class="zh">結合磁鐵結構與折彎設計，直覺區分公筷與私筷，改善共餐衛生習慣。以結構設計解決社會行為問題，是工程思維與人文關懷的結合。</span>
+        <span class="en">Uses magnetic structure and a folding mechanism to intuitively differentiate serving from personal chopsticks, improving shared-dining hygiene through structural design — engineering thinking meets social behavior change.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title-en">Skills</div>
+      <div class="section-title-zh">專業技能</div>
+    </div>
+  </div>
+  <div class="skills-grid fade-in">
+    <div>
+      <div class="skill-group-label">
+        <span class="zh-inline">設計 · 工程軟體</span>
+        <span class="en-inline">Design &amp; Engineering</span>
+      </div>
+      <span class="skill-tag">Creo Parametric</span>
+      <span class="skill-tag">SolidWorks</span>
+      <span class="skill-tag">Rhinoceros</span>
+      <span class="skill-tag">AutoCAD</span>
+    </div>
+    <div>
+      <div class="skill-group-label">
+        <span class="zh-inline">平面 · 影像軟體</span>
+        <span class="en-inline">Visual &amp; Media</span>
+      </div>
+      <span class="skill-tag">Illustrator</span>
+      <span class="skill-tag">Photoshop</span>
+      <span class="skill-tag">InDesign</span>
+      <span class="skill-tag">Premiere</span>
+      <span class="skill-tag">After Effects</span>
+    </div>
+    <div>
+      <div class="skill-group-label">
+        <span class="zh-inline">實作能力</span>
+        <span class="en-inline">Hands-on</span>
+      </div>
+      <span class="skill-tag">
+        <span class="zh-inline">3D 列印</span><span class="en-inline">3D Printing</span>
+      </span>
+      <span class="skill-tag">
+        <span class="zh-inline">立體模型製作</span><span class="en-inline">Model Making</span>
+      </span>
+      <span class="skill-tag">
+        <span class="zh-inline">機構建構</span><span class="en-inline">Mechanism Build</span>
+      </span>
+      <span class="skill-tag">
+        <span class="zh-inline">草圖繪製</span><span class="en-inline">Sketching</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="edu-header-col fade-in">
+    <div class="section-header" style="margin-bottom:0; grid-template-columns:1fr;">
+      <div>
+        <div class="section-num" style="margin-bottom:0.5rem;">05</div>
+        <div class="section-title-en">Education</div>
+        <div class="section-title-zh">學歷</div>
+      </div>
+    </div>
+  </div>
+  <div class="edu-list-col fade-in">
+
+    <div class="edu-item">
+      <div class="edu-school-zh">明志科技大學</div>
+      <div class="edu-school-en">Ming Chi University of Technology</div>
+      <div class="edu-dept">
+        <span class="zh-inline">工業設計系</span>
+        <span class="en-inline">Dept. of Industrial Design</span>
+      </div>
+      <div class="edu-period">2018.09 — 2021.06</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school-zh">淡江大學</div>
+      <div class="edu-school-en">Tamkang University</div>
+      <div class="edu-dept">
+        <span class="zh-inline">統計系</span>
+        <span class="en-inline">Dept. of Statistics</span>
+      </div>
+      <div class="edu-period">2016.09 — 2017.10</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school-zh">臺北市立景美女子高級中學</div>
+      <div class="edu-school-en">Taipei Jingmei Girls High School</div>
+      <div class="edu-dept">
+        <span class="zh-inline">高中學歷</span>
+        <span class="en-inline">Secondary Education</span>
+      </div>
+      <div class="edu-period">2013 — 2016</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>陳采潔</span> · Tsai-Jye Chen · Industrial Designer &amp; Mechanical Engineer · <span>2026</span>
+</footer>
+
+<script>
+  // ── LANG TOGGLE ──
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && lang === 'zh') || (i === 1 && lang === 'en'));
+    });
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
