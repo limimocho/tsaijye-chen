@@ -489,6 +489,27 @@
     border: 1px solid var(--accent-warm);
   }
 
+  .project-images {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-images img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: saturate(0.92) brightness(0.98);
+    transition: filter 0.3s;
+  }
+
+  .project-card:hover .project-images img {
+    filter: saturate(1) brightness(1);
+  }
+
   /* ── EDUCATION ── */
   #education {
     background: var(--bg);
@@ -853,6 +874,9 @@
         <span class="zh">針對擁擠城市與狹窄巷弄設計，車體可橫向伸縮並配備全向移動輪胎與壓電模組，有效縮短黃金救援時間，重新定義城市急救載具。</span>
         <span class="en">Designed for dense urban environments and narrow alleyways. The vehicle body expands laterally, equipped with omnidirectional tires and piezoelectric modules to minimize response time and redefine urban emergency vehicles.</span>
       </div>
+      <div class="project-images">
+        <img src="images/tambu.jpg" alt="Tambu 伸縮救護車">
+      </div>
       <div class="project-award">🥇 ADC Young Ones Gold Award</div>
     </div>
 
@@ -868,6 +892,10 @@
         <span class="zh">結合健保卡認證與專用配送藥箱，減少慢性病患者頻繁出入醫院的感染風險，建立完整的軟硬體服務流程。</span>
         <span class="en">Integrates NHI card authentication with a dedicated delivery case system, reducing chronic patients' hospital visit frequency and infection risk through a complete hardware-software service flow.</span>
       </div>
+      <div class="project-images">
+        <img src="images/prescription.jpg" alt="處方籤快遞">
+        <img src="images/prescription-2.jpg" alt="處方籤快遞 2">
+      </div>
     </div>
 
     <div class="project-card">
@@ -882,6 +910,11 @@
         <span class="zh">將中華文化元素（萍水相逢、風水球、燕尾）轉化為現代個人辦公茶具，兼具實用性與文化意涵，以設計語言詮釋傳統精神。</span>
         <span class="en">Translates Chinese cultural motifs — chance encounters (萍水相逢), feng shui spheres, and swallow tail forms — into contemporary personal tea ware, balancing utility with cultural narrative.</span>
       </div>
+      <div class="project-images">
+        <img src="images/pingxiang.png" alt="萍香 · 源 茶具設計">
+        <img src="images/pingxiang-2.jpg" alt="萍香 · 源 茶具設計 2">
+        <img src="images/pingxiang-3.jpg" alt="萍香 · 源 茶具設計 3">
+      </div>
     </div>
 
     <div class="project-card">
@@ -895,6 +928,11 @@
       <div class="project-desc">
         <span class="zh">結合磁鐵結構與折彎設計，直覺區分公筷與私筷，改善共餐衛生習慣。以結構設計解決社會行為問題，是工程思維與人文關懷的結合。</span>
         <span class="en">Uses magnetic structure and a folding mechanism to intuitively differentiate serving from personal chopsticks, improving shared-dining hygiene through structural design — engineering thinking meets social behavior change.</span>
+      </div>
+      <div class="project-images">
+        <img src="images/jincuwei.jpg" alt="祿食 組合公筷">
+        <img src="images/jincuwei-2.jpg" alt="祿食 組合公筷 2">
+        <img src="images/jincuwei-3.jpg" alt="祿食 組合公筷 3">
       </div>
     </div>
 
